@@ -1,14 +1,4 @@
 <div>
-    <div class="bg-white rounded-lg shadow-lg mb-10">
-        <div class="px-6 py-2 grid grid-cols-3">
-            <h1 class="font-semibold text-gray-700 uppercase">Descarga nuestros catálogos: </h1>
-           <div>
-               <a href="{{asset('catalogo/bodas.pdf')}}" class="bg-red-500 hover:bg-red-600 hover:px-5  cursor-pointer py-2 px-4 text-white font-semibold rounded-lg"  download="bodas.pdf"  target="_blank">Bodas</a>     
-           </div>
-           
-        </div>
-    </div> 
-
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 xl:gap-8">
         <div class="text-center btn_filter_rp">
             <button class="bg-green-600 hover:bg-green-700 px-3 py-1 rounded text-white show-modal">
@@ -94,28 +84,26 @@
 
             </div>
             @if ($view == 'grid')
-                <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-6">
                     @forelse ($products as $product)
                         <li class="bg-white  ">
-                            <article class="zoomcatalg ">
+                            <article class="border-2 overflow-hidden border-gray-300 rounded-xl zoomcatalg ">
                                 
                                 <a href="{{ route('products.show', $product) }}">
                                     <figure class="relative">
-                                        <div class="absolute z-30">
+                                        <div class="absolute z-30 mt-4 ml-4">
                                             @if ($product->offer == 0)
-                                                
+                                          
                                             @else
-                                            <div class="bg-red-800 text-white px-2 py-1 w-20 rounded-xl z-50">
-                                                <p class="text-center">
+                                            <div class="bg-red-600 text-white px-1 py-1 w-16 rounded-lg z-50">
+                                                <p class="text-center text-sm font-semibold">
                                                     - {{ intval((($product->offer - $product->price)/$product->offer)*100)}} %
-        
                                                 </p>
                                             </div>
-        
                                             @endif
                                         </div>
                                         @if ($product->images->count())
-                                            <img class="h-80 w-full object-cover object-center scrollflow -slide-bottom -opacity"
+                                            <img class=" h-80 w-full object-cover object-center scrollflow -slide-bottom -opacity"
                                                 src="{{ Storage::url($product->images->first()->url) }}" alt="">
                                         @else
                                             <img class="h-80 w-full object-cover object-center"
@@ -125,21 +113,25 @@
                                         
                                     </figure>
                                     <div class="py-2 px-2">
-                                        <p class="text-green-700 text-center uppercase"> {{$product->subcategory->name}}</p>
+                                        <p class="text-gray-400 font-medium text-xs text-center uppercase"> {{$product->subcategory->name}}</p>
                                        
                                         <h1 class="text-lg  text-center font-semibold scrollflow -slide-bottom -opacity">
 
                                             {{ Str::limit($product->name,40, '...') }}
 
                                         </h1>
-                                        <p class="font-bold text-center text-green-700 scrollflow -slide-bottom -opacity">S/ {{ $product->price }}</p>
-                                      @if ($product->offer != 0)
-                                        <p class="text-center text-gray-300 line-through">S/ {{$product->offer}}</p>
+                                        <p class="font-bold text-center text-red-600 scrollflow -slide-bottom -opacity">S/ {{ $product->price }}</p>
+                                      @if (  $product->offer != 0)
+                                        <p class="text-center text-gray-300 line-through">s/ {{$product->offer}}</p>
                                           
                                       @else
                                           
                                       @endif
-                                   
+                                        <div class="flex justify-center py-4">
+                                            <button class="text-white add_prod font-medium text-sm bg-blue-800 px-5 py-2 rounded-xl"><i class="fa-solid fa-magnifying-glass mr-2"></i>Ver</button>
+                                        </div>
+                                     
+                                      
                                     </div>
                                 </a>
                             </article>

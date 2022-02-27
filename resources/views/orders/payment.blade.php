@@ -41,13 +41,13 @@
     <div class="grid grid-cols-1 mt-14 lg:grid-cols-2 xl:grid-cols-5 gap-6 container py-8">
         <div class="order-2 lg:order-1 xl:col-span-3 ">
             <div class="bg-white rounded-lg shadow-lg px-6 py-4 mb-6">
-                <p class=" uppercase"> <span class="colorverderr font-bold">Número de orden:</span>
+                <p class=" uppercase"> <span class=" font-bold">Número de orden:</span>
                     Orden-{{ $order->id }}</p>
             </div>
             <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
                 <div class="grid grid-cols-2 gap-6 ">
                     <div>
-                        <p class="text-lg colorverderr font-bold uppercase">Envío</p>
+                        <p class="text-lg  font-bold uppercase">Envío</p>
                         @if ($order->envio_type == 1)
                             <p class="text-sm">Los productos deben ser recogidos en tienda</p>
                             <p class="text-sm">Calle falsa 123</p>

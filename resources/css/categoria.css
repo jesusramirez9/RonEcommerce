@@ -74,14 +74,12 @@
     font-size: 24px;
     font-weight: 300;
     background: #ffffff;
-    color: #9c303d;
     text-decoration: none;
     font-weight: 600;
     border: 2px solid;
 }
 .accordion-titulo.open {
     background: #ffffff;
-    color: #9c303d;
     border: 2px solid;
     font-weight: 600;
 }
@@ -91,10 +89,12 @@
 
 .accordion-titulo span.toggle-icon:before {
     content: url('../../public/images/catalogo/arrow_down2.png');
+    filter: brightness();
 }
 
 .accordion-titulo.open span.toggle-icon:before {
     content: url('../../public/images/catalogo/arrow_down2bj.png');
+    filter: brightness();
 }
 
 .accordion-titulo span.toggle-icon {

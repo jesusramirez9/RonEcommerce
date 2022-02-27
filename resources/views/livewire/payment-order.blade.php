@@ -10,7 +10,6 @@
         Lyra\Client::setDefaultSHA256Key('fBmPcKxYAStyHYWT6qLsKjv0ekto5maeyUEDGkJZtQ8L3');
         $client = new Lyra\Client();
         
-    
         $store = [
             'amount' => $order->total * 100,
             'currency' => 'PEN',
@@ -28,7 +27,6 @@
         }
         
         $formToken = $response['answer']['formToken'];
-      
         
     @endphp
 
@@ -36,50 +34,57 @@
         <link rel="stylesheet" href="<?php echo $client->getClientEndpoint(); ?>/static/js/krypton-client/V4.0/ext/classic-reset.css">
         <script src="<?php echo $client->getClientEndpoint(); ?>/static/js/krypton-client/V4.0/ext/classic.js">
         </script>
-
     @endpush
+    <div class="bg-red-600 py-6">
+        <p class="text-center text-white text-lg xl:text-2xl font-semibold">
+            Orden de compra
+        </p>
+        <div class="text-center">
+            <a href="/" class="text-white underline text-sm">Ir al inicio</a>
+        </div>
+    </div>
 
     <div class="md:grid  md:grid-cols-5 gap-6 container py-8">
 
         <div class="md:col-span-3 ">
             <div class="bg-white rounded-lg shadow-lg  md:mt-0 px-4 md:px-6 py-4 mb-6">
-                <p class="colorbroywm font-bold uppercase"> <span class="colorverderr font-bold">Número de
+                <p class="colorbroywm font-bold uppercase"> <span class=" font-bold">Número de
                         orden:</span>
                     Orden-{{ $order->id }}</p>
             </div>
             <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-700">
                     <div>
-                        <p class="text-lg colorverderr font-bold uppercase">Envío</p>
+                        <p class="text-lg  font-bold uppercase">Datos de envío</p>
                         @if ($order->envio_type == 1)
                             <p class="text-sm colorbroywm font-bold">Los productos deben ser recogidos en tienda</p>
                             <p class="text-sm colorbroywm font-bold">Calle falsa 123</p>
                         @else
                             <p class="text-sm colorbroywm font-bold">Los productos serán enviados a:</p>
-                            <p class="text-sm colorbroywm font-bold">{{ $envio->address }}</p>
-                            <p class="colorbroywm font-bold">{{ $envio->department }} - {{ $envio->city }} -
+                            <p class="colorbroywm font-normal">{{ $envio->address }}</p>
+                            <p class="colorbroywm font-normal">{{ $envio->department }} - {{ $envio->city }} -
                                 {{ $envio->district }}</p>
-                                <p class="text-sm colorbroywm font-bold">Referencia:</p>
-                                <p class="text-sm colorbroywm font-bold  ">{{ $envio->references }}</p>
+                            <p class="text-sm colorbroywm font-bold">Referencia:</p>
+                            <p class="colorbroywm font-normal  ">{{ $envio->references }}</p>
                         @endif
                     </div>
 
                     <div>
-                        <p class="text-lg colorverderr font-bold uppercase">Datos de contacto</p>
-                        <p class="text-sm colorverderr font-bold">Persona que recibirá el producto: <span
-                                class="colorbroywm font-normal"> {{ $order->contact }}</span></p>
-                        <p class="text-sm colorverderr font-bold">Teléfono de contacto: <span
-                                class="colorbroywm font-normal">{{ $order->phone }}</span> </p>
+                        <p class="text-lg  font-bold uppercase">Datos de contacto</p>
+                        <p class="text-sm  font-bold">Persona que recibirá el producto: </p>
+                        <p class="colorbroywm font-normal"> {{ $order->contact }}</p>
+                        <p class="text-sm  font-bold">Teléfono de contacto: </p>
+                        <p class="colorbroywm font-normal">{{ $order->phone }}</p>
                     </div>
                 </div>
             </div>
 
             <div class="bg-white rounded-lg shadow-lg p-6 mb-6 text-gray-700">
-                <p class="text-xl colorverderr font-bold mb-4">Resumen</p>
+                <p class="text-xl  font-bold mb-4">Resumen</p>
 
                 <table class="table-auto w-full">
                     <thead>
-                        <tr class="colorverderr font-bold">
+                        <tr class=" font-bold">
                             <th></th>
                             <th class="text-xs sm:text-base">Precio</th>
                             <th class="text-xs sm:text-base">Cant</th>
@@ -146,13 +151,13 @@
                     </div>
                     <div class="colorbroywm ml-4">
                         <p class="mb-1  text-sm font-bold ">
-                            Subotal: S/{{ $order->total - $order->shipping_cost }}
+                            Subotal: S/ {{ $order->total - $order->shipping_cost }}
                         </p>
                         <p class="mb-3  text-sm font-bold ">
-                            Envio: S/{{ $order->shipping_cost }}
+                            Envio: S/ {{ $order->shipping_cost }}
                         </p>
                         <p class="mb-3 text-lg font-bold uppercase">
-                            Total: S/{{ $order->total }}
+                            Total: S/ {{ $order->total }}
                         </p>
 
                         {{-- <div class="cho-container">
@@ -181,11 +186,13 @@
                     <!-- error zone -->
                     <div class="kr-form-error"></div>
                 </div> --}}
+                <div class="flex justify-end">
+                    <x-jet-button wire:loading.attr="disabled" wire:target="create_order" class="mt-6 mb-4 "
+                        wire:click="create_order">
+                        Realizar pedido
+                    </x-jet-button>
+                </div>
 
-                <x-jet-button wire:loading.attr="disabled" wire:target="create_order" class="mt-6 mb-4 bgvrdff"
-                wire:click="create_order">
-                Realizar pedido
-            </x-jet-button> 
             </div>
 
         </div>
@@ -199,9 +206,8 @@
 
 </div>
 
-{{--Ejemplo con paypal--}}
-{{--  
-<section>
+{{-- Ejemplo con paypal --}}
+{{-- <section>
     <div>
     
         <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-5 gap-6 container py-8">

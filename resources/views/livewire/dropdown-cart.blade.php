@@ -16,7 +16,7 @@
         </x-slot>
 
         <x-slot name="content">
-            <ul>
+            <ul class="text-gray-500">
                 @forelse (Cart::content() as $item)
                     <li class="flex p-2 border-b border-gray-200">
                         <img class="h-15 w-20 object-cover mr-4" src="{{$item->options->image}}" alt="">
@@ -48,7 +48,7 @@
                     <p class="text-lg text-gray-700 mt-2 mb-3"><span class="font-bold">Total: </span> S/ {{ Cart::subtotal() }}</p>
                   
                     <x-button-enlace href="{{route('shopping-cart')}}" color="orange" class="w-full">Ir al carrito de compras</x-button-enlace>
-                    <a class="text-sm cursor-pointer hover:underline mt-3 inline-block" wire:click="destroy">
+                    <a class="text-sm cursor-pointer hover:underline mt-3 inline-block text-red-600 hover:text-red-800" wire:click="destroy">
                         <i class="fas fa-trash"></i>
                         Borrar carrito de compras
                     </a>

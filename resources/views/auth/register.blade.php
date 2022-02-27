@@ -11,10 +11,10 @@
                 <div class="alselcent">
                     <div class="flex items-center justify-center text-center pb-6 ">
                         <div>
-                            <img src="{{asset('img/logo.png')}}" class="w-16"  alt="">
+                            <x-jet-authentication-card-logo /> 
                         </div>
                         <div>
-                            <p class="ml-4 text-xl md:text-2xl verdegreen font-bold">Crea tu cuenta</p>
+                            <p class="ml-4 text-xl md:text-2xl  font-bold">Crea tu cuenta</p>
                         </div>
                     </div>
                     <form method="POST" action="{{ route('register') }}">
@@ -62,14 +62,14 @@
                         @endif
         
                         <div class="mt-4 w-full">
-                            <x-jet-button class=" d-blck w-full text-center bg-footer">
+                            <x-jet-button class=" d-blck w-full text-center">
                                 {{ __('Register') }}
                             </x-jet-button>
                         </div>
                     </form>
                     <div class="mt-4 flex justify-center text-center">
                         <p>¿Ya tienes tu cuenta?</p>
-                        <a href="{{ route('login') }}" class="ml-2 underline verdegreen font-bold">Inicia sesión</a>
+                        <a href="{{ route('login') }}" class="ml-2 underline font-bold">Inicia sesión</a>
                     </div>
                 </div>
                 <div class="jtifyend imgregisterdp">

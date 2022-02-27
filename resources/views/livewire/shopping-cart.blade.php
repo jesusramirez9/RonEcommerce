@@ -2,7 +2,7 @@
 
     <x-table-responsive>
         <div class="px-6 pb-4  lg:py-4 text-center  md:mt-0 bg-white">
-            <h1 class="text-2xl lg:text-4xl font-bold link_vrd ">Bolsa de compras</h1>
+            <h1 class="text-2xl lg:text-4xl font-bold ">Bolsa de compras</h1>
         </div>
 
         @if (Cart::count())
@@ -10,27 +10,27 @@
                 <thead class="bg-gray-50 brdever_tble">
                     <tr>
                         <th scope="col"
-                            class="px-6 py-3 text-left text-xs font-bold colorverderr uppercase tracking-wider">
+                            class="px-6 py-3 text-left text-xs font-bold  uppercase tracking-wider">
                             Producto
                         </th>
                         <th scope="col"
-                            class="px-6 py-3 text-left text-xs font-bold colorverderr uppercase tracking-wider">
+                            class="px-6 py-3 text-left text-xs font-bold  uppercase tracking-wider">
                             Precio
                         </th>
                         <th scope="col"
-                            class="px-6 py-3 text-left text-xs font-bold colorverderr uppercase tracking-wider">
+                            class="px-6 py-3 text-left text-xs font-bold  uppercase tracking-wider">
                             Cantidad
                         </th>
                         <th scope="col"
-                            class="px-6 py-3 text-left text-xs font-bold colorverderr uppercase tracking-wider">
+                            class="px-6 py-3 text-left text-xs font-bold  uppercase tracking-wider">
                             Subtotal
                         </th>
 
                     </tr>
                 </thead>
-                <tbody class="bg-white divide-y divide-green-900 brdever_tble">
+                <tbody class="bg-white ">
                     @foreach (Cart::content() as $item)
-                        <tr >
+                        <tr class="border-b-2 border-gray-500 border-opacity-20">
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="flex items-center">
                                     <div class="flex-shrink-0 h-10 w-10">
@@ -95,7 +95,7 @@
             <div class="flex flex-col items-center mt-2 md:mt-0 py-4">
                 <x-cart></x-cart>
                 <p class="text-sm lg:text-lg text-gray-700 mt-4">TU BOLSA DE COMPRAS ESTÁ VACÍO</p>
-                <x-button-enlace href="http://127.0.0.1:8000/categories/pasteles" class="mt-4 bg-yellow-600 px-16">
+                <x-button-enlace href="http://127.0.0.1:8000/categories/moda" class="mt-4 bg-blue-700 px-16">
                     Nuestros productos
                 </x-button-enlace>
             </div>

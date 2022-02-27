@@ -17,4 +17,9 @@ class ShowPost extends Component
 
         return view('livewire.show-post', compact('posts'));
     }
+
+    public function show(Posts $id){
+
+        return view('livewire.show');
+    }
 }

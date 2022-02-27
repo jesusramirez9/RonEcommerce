@@ -5,9 +5,9 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-24">
             <div>
                 <!-- Place somewhere in the <body> of your page -->
-                <div class="md:mt-0 mb-3">
-                    <p class="titl_cata"> Producto / <span class="tipo_catalog">{{ $product->name }}</span> </p>
-                </div>
+                {{-- <div class="md:mt-0 mb-3">
+                    <p class=""> {{$product->subcategory->name}} <i class="fas fa-arrow-right ml-4 mr-4"></i> <span class="">{{ $product->name }}</span> </p>
+                </div> --}}
                 <div class="flexslider">
                     <ul class="slides">
 
@@ -21,27 +21,31 @@
 
             </div>
             <div class="-mt-8 md:mt-12">
-                <p class="text-base ">Calificación: {{ round($product->reviews->avg('rating'), 1) }} <i
+                <p class="text-base mb-4">Calificación: {{ round($product->reviews->avg('rating'), 1) }} <i
                         class="fas fa-star text-yellow-400 "></i></p>
-                <h1 class="text-xl font-bold  title_product">{{ $product->name }}</h1>
-                <div class="flex">
+                <p class="mb-4 uppercase"> <i class="fas fa-arrow-right mr-4"></i> <span class="">
+                        {{ $product->subcategory->name }}</span> </p>
+
+                <h1 class=" font-bold text-3xl"> {{ $product->name }}</h1>
+                <div class="flex mt-4">
 
                     <a class="underline hover:text-orange-600" href="#resña">{{ count($product->reviews) }}
                         comentarios
                         de nuestros clientes</a>
                 </div>
                 <div class="flex items-center">
-                    <p class="text-2xl my-4 font-semibold price_produc">S/ {{ $product->price }}</p>
+                    <p class="text-2xl my-4 font-semibold "><span class="text-xs">S/</span>
+                        {{ $product->price }}</p>
                     <div class="mx-4">
                         @if ($product->offer != 0)
                             <p class=" text-gray-300 line-through">S/ {{ $product->offer }}</p>
-
                         @else
                         @endif
                     </div>
                 </div>
-
-                <hr class=" mb-4 hrgreen">
+                <div class="text-justify normal-case mb-4">
+                    <p>{!! $product->description !!}</p>
+                </div>
                 {{-- <div class="bg-white rounded-lg shadow-lg mb-6 ">
                     <div class="flex p-4 items-center">
                         <span class="flex items-center justify-center h-10 w-10 rounded-full bg-greenLime-600">
@@ -56,49 +60,17 @@
 
                 @if ($product->subcategory->size)
                     @livewire('add-cart-item-size', ['product' => $product])
-
                 @elseif($product->subcategory->color)
-
                     @livewire('add-cart-item-color', ['product' => $product])
-
                 @else
-
                     @livewire('add-cart-item', ['product' => $product])
                 @endif
 
-                <div class="bg-detalledeliv mt-4">
-                    <div class="flex">
-                        <div>
-                            <img src="{{ asset('images/catalogoproductos/checkm.png') }}" alt="">
-                        </div>
-                        <div class="ml-3">
-                            <h1 class="detalledeliv">Compra satisfactoria</h1>
-                            {{-- <p class="mt-1 detalledelivp">Aquí irá un texto sobre el titular, el cual <br> leerá el
-                                usuario. <a class="underline detalledeliv">Leer más</a> </p> --}}
-                        </div>
-                    </div>
-                    <div class="flex mt-4">
-                        <div>
-                            <img src="{{ asset('images/catalogoproductos/fast.png') }}" alt="">
-                        </div>
-                        <div class="ml-3">
-                            <h1 class="detalledeliv">Delivery a todo lima</h1>
-                        </div>
-                    </div>
-                    <div class="flex mt-4">
-                        <div>
-                            <img src="{{ asset('images/catalogoproductos/cards.png') }}" alt="">
-                        </div>
-                        <div class="ml-3">
-                            <h1 class="detalledeliv">Paga en línea de manera segura</h1>
-                        </div>
-                    </div>
-                </div>
 
             </div>
         </div>
 
-        <div class="">
+        {{-- <div class="">
             <div class="mt-0 md:mt-8">
                 <div class="mytabs">
                     <input type="radio" name="mytabs" id="tabfree" checked="checked">
@@ -116,16 +88,14 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
-        <div>
-            <a name="resña"></a>
-            @livewire('products-reviews', ['product' => $product])
-        </div>
 
         <div class="text-center">
             <div class="text-center py-4 md:py-8 ">
-                <p class="text-xl md:text-2xl lg:text-4xl verdegreen font-bold">Más Productos </p>
+                <p class="text-xl md:text-2xl ">Más productos encontrados en la Categoría <span
+                        class="text-black font-semibold text-xl lg:text-2xl">{{ $product->subcategory->name }}</span>
+                </p>
             </div>
 
             <div class="glider-contain">
@@ -133,7 +103,7 @@
                 <div class="prelacionado">
                     @foreach ($subcategories as $subcategory)
                         @foreach ($subcategory->products as $product)
-                            <div class="mx-4">
+                            <div class="mx-4 border-2 overflow-hidden border-gray-300 rounded-xl">
                                 <figure>
 
                                     @if ($product->images->count())
@@ -147,8 +117,32 @@
 
                                 </figure>
                                 <a href="{{ route('products.show', $product) }}">
-                                    <p class="titl_product lg:text-left">{{ $product->name }}</p>
-                                    <p class="price_prodc lg:text-left">S/ {{ $product->price }}</p>
+                                   
+                                    <div class="py-2 px-2">
+                                        <p class="text-gray-400 font-medium text-xs text-center uppercase">
+                                            {{ $product->subcategory->name }}</p>
+
+                                        <h1
+                                            class="text-lg  text-center font-semibold scrollflow -slide-bottom -opacity">
+
+                                            {{ Str::limit($product->name, 40, '...') }}
+
+                                        </h1>
+                                        <p class="font-bold text-center text-red-600 scrollflow -slide-bottom -opacity">
+                                            S/ {{ $product->price }}</p>
+                                        @if ($product->offer != 0)
+                                            <p class="text-center text-gray-300 line-through">s/ {{ $product->offer }}
+                                            </p>
+                                        @else
+                                        @endif
+                                        <div class="flex justify-center py-4">
+                                            <button
+                                                class="text-white add_prod font-medium text-sm bg-blue-800 px-2 py-2 rounded-xl"><i
+                                                    class="fa fa-shopping-cart mr-2"></i>Agregar</button>
+                                        </div>
+
+
+                                    </div>
                                 </a>
                             </div>
                         @endforeach
@@ -160,8 +154,12 @@
             </div>
 
         </div>
+        
 
-
+        <div>
+            <a name="resña"></a>
+            @livewire('products-reviews', ['product' => $product])
+        </div>
 
     </div>
     @push('script')
@@ -200,6 +198,21 @@
                         breakpoint: 1024,
                         settings: {
                             slidesToShow: 3,
+                            slidesToScroll: 1,
+                            itemWidth: 150,
+                            duration: 1.5,
+                            arrows: {
+                                prev: '.glider-prev',
+                                next: '.glider-next'
+                            },
+
+                        }
+                    },
+                    {
+                        // screens greater than >= 1024px
+                        breakpoint: 1250,
+                        settings: {
+                            slidesToShow: 4,
                             slidesToScroll: 1,
                             itemWidth: 150,
                             duration: 1.5,

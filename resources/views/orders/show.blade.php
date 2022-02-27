@@ -41,9 +41,8 @@
                 </div>
             </div>
 
-           
-            <div
-                class="{{ $order->status == 5  ? 'bg-red-400 block' : 'bg-gray-400 hidden' }} h-1 flex-1  mx-2">
+
+            <div class="{{ $order->status == 5 ? 'bg-red-400 block' : 'bg-gray-400 hidden' }} h-1 flex-1  mx-2">
             </div>
             <div class="relative">
                 <div
@@ -55,23 +54,49 @@
                 </div>
             </div>
 
-          
+
 
         </div>
+
+        <div class="bg-blue-50 rounded-lg shadow-lg px-6 py-4 mb-6 items-center">
+
+
+            <p>
+                <span class="text-gray-600 font-bold">Estado: </span>
+                Recibido
+            </p>
+            <p>En este estado el producto ya se encuentra registrado en nuestras instalaciones, estaremos alistando
+                tu producto para enviarlo y/o lo recogas en tienda.</p>
+            <p>
+                <span class="text-gray-600 font-bold">Estado: </span>
+                Enviado
+            </p>
+            <p>En este estado el producto ya se encuentra en camino y/o listo para que lo recogas en nuestras
+                instalaciones.</p>
+
+            <p>
+                <span class="text-gray-600 font-bold">Estado: </span>
+                Entregado
+            </p>
+            <p>Muchas gracias por tu compra</p>
+
+
+
+
+        </div>
+
         <div class="bg-white rounded-lg shadow-lg px-6 py-4 mb-6 flex items-center">
-            <p class="colorbroywm font-bold uppercase"> <span class="colorverderr font-bold">Número de orden:</span>
+            <p class="colorbroywm font-bold uppercase"> <span class=" font-bold">Número de orden:</span>
                 Orden-{{ $order->id }}</p>
             @if ($order->status == 1)
                 <x-button-enlace class=" bg-red-400 ml-auto cursor-pointer"
                     href="{{ route('orders.payment', $order) }}">Ir a pagar</x-button-enlace>
-
-
             @endif
         </div>
         <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-700">
                 <div>
-                    <p class="text-lg colorverderr font-bold uppercase">Envío</p>
+                    <p class="text-lg  font-bold uppercase">Envío</p>
                     @if ($order->envio_type == 1)
                         <p class="text-sm colorbroywm font-semibold">Los productos deben ser recogidos en tienda</p>
                         <p class="text-sm colorbroywm ">Calle falsa 123</p>
@@ -82,24 +107,25 @@
                             {{ $envio->district }}</p>
                         <p class="text-sm colorbroywm font-semibold">Referencia del lugar:</p>
                         <p class="text-sm colorbroywm ">{{ $envio->references }}</p>
-
                     @endif
                 </div>
 
                 <div>
-                    <p class="text-lg colorverderr font-bold uppercase">Datos de contacto</p>
-                    <p class="text-sm colorverderr font-semibold">Persona que recibirá el producto: <span class="colorbroywm ">{{ $order->contact }}</span> </p>
-                    <p class="text-sm colorverderr font-semibold">Teléfono de contacto: <span class="colorbroywm "> {{ $order->phone }}</span></p>
+                    <p class="text-lg  font-bold uppercase">Datos de contacto</p>
+                    <p class="text-sm  font-semibold">Persona que recibirá el producto: </p>
+                    <p class="colorbroywm">{{ $order->contact }}</p>
+                    <p class="text-sm  font-semibold">Teléfono de contacto:</p>
+                    <p class="colorbroywm"> {{ $order->phone }}</p>
                 </div>
             </div>
         </div>
 
         <div class="bg-white rounded-lg shadow-lg p-6 mb-6 text-gray-700">
-            <p class="text-xl mb-4 colorverderr font-bold">Resumen</p>
+            <p class="text-xl mb-4  font-bold">Resumen</p>
 
             <table class="table-auto w-full">
                 <thead>
-                    <tr class="colorverderr font-bold">
+                    <tr class=" font-bold">
                         <th></th>
                         <th class="text-xs sm:text-base">Precio</th>
                         <th class="text-xs sm:text-base">Canti</th>
@@ -112,12 +138,12 @@
                         <tr>
                             <td>
                                 <div class="flex ">
-                                    
-                                        <img class="h-15 w-20 object-cover mr-4" src="{{ $item->options->image }}"
+
+                                    <img class="h-15 w-20 object-cover mr-4" src="{{ $item->options->image }}"
                                         alt="">
-                                        
-                                  
-                                    
+
+
+
                                     <article>
                                         <h1 class="font-bold txttitel_resumen">{{ $item->name }}</h1>
                                         <div class="flex text-xs txttitel_resumen">
@@ -133,13 +159,13 @@
                                 </div>
                             </td>
                             <td class="text-center colorbroywm font-bold text-xs sm:text-base">
-                               S/{{ $item->price }} 
+                                S/{{ $item->price }}
                             </td>
                             <td class="text-center colorbroywm font-bold text-xs sm:text-base">
                                 {{ $item->qty }}
                             </td>
                             <td class="text-center colorbroywm font-bold text-xs sm:text-base">
-                              S/{{ $item->price * $item->qty }} 
+                                S/{{ $item->price * $item->qty }}
                             </td>
                         </tr>
                     @endforeach

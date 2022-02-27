@@ -74,14 +74,30 @@ Route::get('conocenos', function () {
 Route::get('noticia', function(){
     return view('web.noticias');
 })->name('noticia.show');
+Route::get('noticia/{$id}', function(){
+    return view('web.shownoticia');
+})->name('shownoticia.show');
 
 Route::get('servicios', function(){
     return view('web.service');
 })->name('servicios');
 
+Route::get('politicas-de-privacidad', function(){
+    return view('web.politicas');
+})->name('politicas');
+
+Route::get('terminos-y-condiciones', function(){
+    return view('web.terminos');
+})->name('terminos');
+
+
 Route::get('contactanos',[ContactoController::class, 'index'])->name('contacto');
 
 Route::post('contactanos',[ContactoController::class, 'store'])->name('contacto.store');
+
+Route::get('ventas-al-por-mayor', function(){
+    return view('web.ventasmayor');
+})->name('ventamayor');
 
 Route::get('/login-google', function () {
     return Socialite::driver('google')->redirect();

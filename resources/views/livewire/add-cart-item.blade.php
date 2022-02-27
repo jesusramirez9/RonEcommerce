@@ -1,7 +1,7 @@
 <div x-data>
 
 
-    <p class="text-gray-700 mb-4"> <span class="text-lg font-semibold">Stock disponible: </span>{{ $quantity }}</p>
+    <p class="text-gray-700 mb-4 mt-4"> <span class="text-lg font-semibold">Stock disponible: </span>{{ $quantity }}</p>
     <div class="flex">
         <div class="mr-4 bordradiu">
             <x-jet-secondary-button  class="btn_menmas" disabled x-bind:disabled="$wire.qty <= 1" wire:loading.attr="disabled"
@@ -16,10 +16,12 @@
         </div>
         <div class="flex-1">
             <div class="itemcolbtnweb">
-                <x-button color="orange" x-bind:disabled="$wire.qty > $wire.quantity" class="w-full"
+                <button class="text-white add_prod font-medium text-sm bg-blue-800 px-2 py-2 rounded-xl hover:bg-blue-700" x-bind:disabled="$wire.qty > $wire.quantity" wire:click="addItem" wire:loading.attr="disabled" wire:target="addItem"><i class="fa fa-shopping-cart mr-2"  ></i>Agregar a la bolsa</button>
+
+                {{-- <x-button color="orange" x-bind:disabled="$wire.qty > $wire.quantity" class="w-full"
                     wire:click="addItem" wire:loading.attr="disabled" wire:target="addItem">
                     Agregar a la bolsa
-                </x-button>
+                </x-button> --}}
             </div>
             <div  class="itemcolorbtn">
                 <x-button color="orange" x-bind:disabled="$wire.qty > $wire.quantity" class="w-full"
@@ -30,9 +32,9 @@
            
         </div>
     </div>
-    <div>
-        <p class="uppercase text-gray-300 font-semibold">SKU:  {{$product->code}}</p> 
-        <p class=" text-gray-300 font-semibold">Categoría: <span class="uppercase"> {{$product->subcategory->name}}</span> </p> 
+    <div class="mt-8 ">
+        <p class="uppercase text-gray-400 font-normal">SKU:  {{$product->code}}</p> 
+        <p class=" text-gray-400 font-normal">Categoría: <span class="uppercase"> {{$product->subcategory->name}}</span> </p> 
  
       </div>
 </div>

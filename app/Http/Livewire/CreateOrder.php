@@ -38,18 +38,18 @@ class CreateOrder extends Component
 
     public function mount(){
         $this->departments = Department::all();
-    //   $qty_total = 0;
-    //     foreach (Cart::content() as $item) {
-    //         $qty_total += $item->qty; 
-    //      }
+          $qty_total = 0;
+        // foreach (Cart::content() as $item) {
+        //     $qty_total += $item->qty; 
+        //  }
          
-    //      if($qty_total == 1){
-    //         $this->shipping_cost = 15;
-    //      }elseif($qty_total == 2){
-    //         $this->shipping_cost = 20;
-    //      }else{
-    //         $this->shipping_cost = 0;
-    //      }
+         if($qty_total == 1){
+            $this->shipping_cost = 15;
+         }elseif($qty_total == 2){
+            $this->shipping_cost = 20;
+         }else{
+            $this->shipping_cost = 0;
+         }
 
     }
 
@@ -129,7 +129,6 @@ class CreateOrder extends Component
         }
 
         Cart::destroy();
-
         return redirect()->route('orders.payment', $order);
       
     }
@@ -137,6 +136,7 @@ class CreateOrder extends Component
     public function render()
     {
         $user= User::all();
+      
         return view('livewire.create-order', compact('user'));
     }
 }

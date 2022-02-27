@@ -9,7 +9,7 @@
         {{-- {{ auth()->user()->name}} --}}
         <div class="bg-white rounded-lg shadow p-6">
             <div class="mb-4">
-                <x-jet-label value="Nombre de contácto" class="colorverderr font-bold" />
+                <x-jet-label value="Nombre de contácto" class=" font-bold" />
                 <x-jet-input type="text"
                             wire:model.defer="contact"
                            
@@ -20,7 +20,7 @@
             </div>
 
             <div>
-                <x-jet-label value="Teléfono de contacto"  class="colorverderr font-bold" />
+                <x-jet-label value="Teléfono de contacto"  class=" font-bold" />
                 <x-jet-input type="text" 
                             maxlength="9"
                             oninput="maxlengthNumber(this);"
@@ -33,7 +33,7 @@
         </div>
 
         <div x-data="{ envio_type: @entangle('envio_type') }">
-            <p class="mt-6 mb-3 text-xl colorverderr font-bold">Elige un destino</p>
+            <p class="mt-6 mb-3 text-xl  font-bold">Elige un destino</p>
  
             <label class="bg-white rounded-lg shadow px-6 py-4 flex items-center mb-4 cursor-pointer">
                 <input x-model="envio_type" type="radio" value="1" name="envio_type" class="text-gray-600">
@@ -59,7 +59,7 @@
 
                     {{-- Departamentos --}}
                     <div class="col-span-2 md:col-span-1">
-                        <x-jet-label class="colorverderr font-bold" value="Departamento" />
+                        <x-jet-label class=" font-bold" value="Departamento" />
 
                         <select class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm w-full" wire:model="department_id">
 
@@ -75,7 +75,7 @@
 
                     {{-- Ciudades --}}
                     <div class="col-span-2 md:col-span-1">
-                        <x-jet-label class="colorverderr font-bold" value="Ciudad" />
+                        <x-jet-label class=" font-bold" value="Ciudad" />
 
                         <select class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm w-full" wire:model="city_id">
 
@@ -92,7 +92,7 @@
 
                     {{-- Distritos --}}
                     <div class="col-span-2 md:col-span-1">
-                        <x-jet-label class="colorverderr font-bold" value="Distrito" />
+                        <x-jet-label class=" font-bold" value="Distrito" />
 
                         <select class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm w-full" wire:model="district_id">
 
@@ -107,13 +107,13 @@
                     </div>
 
                     <div class="col-span-2 md:col-span-1">
-                        <x-jet-label class="colorverderr font-bold" value="Dirección" />
+                        <x-jet-label class=" font-bold" value="Dirección" />
                         <x-jet-input class="w-full" wire:model="address" type="text" />
                         <x-jet-input-error for="address" />
                     </div>
 
                     <div class="col-span-2">
-                        <x-jet-label class="colorverderr font-bold" value="Referencia" />
+                        <x-jet-label class=" font-bold" value="Referencia" />
                         <x-jet-input class="w-full" wire:model="references" type="text" />
                         <x-jet-input-error for="references" />
                     </div>
@@ -127,7 +127,7 @@
             <x-jet-button
                 wire:loading.attr="disabled"
                 wire:target="create_order"
-                class="mt-6 mb-4 bgvrdff" 
+                class="mt-6 mb-4 " 
                 wire:click="create_order">
                 Continuar con la compra
             </x-jet-button>
@@ -142,7 +142,7 @@
     <div class="order-1 lg:order-2 lg:col-span-1 xl:col-span-2">
         <div class="bgresumencompra rounded-lg shadow p-6">
             <ul>
-                <p class="colorverderr font-bold">Resumen de la compra</p>
+                <p class=" font-bold">Resumen de la compra</p>
                 <hr class="mb-3 hrgreen">
                 @forelse (Cart::content() as $item)
                     <li class="flex p-2 border-b border-gray-200">
@@ -177,7 +177,7 @@
 
             <hr class="mt-4 mb-3 hrgreen">
 
-            <div class="colorverderr font-bold">
+            <div class=" font-bold">
                 <p class="flex justify-between items-center">
                     Subtotal
                     <span class="colorplomor font-semibold">S/ {{Cart::subtotal()}}</span>
@@ -198,14 +198,18 @@
                 <p class="flex justify-between items-center font-semibold">
                     <span class="text-lg">Total</span>
                     @if ($envio_type == 1)
-                       S/ {{Cart::subtotal()}} 
+                       S/ {{ Cart::subtotal() }} 
+
                     @else
-                        S/ {{Cart::subtotal() + $shipping_cost}} 
+                        S/ {{ Cart::subtotal()  + $shipping_cost}} 
+
                     @endif
                 </p>
             </div>
         </div>
     </div>
+
+  
     @push('script')
         <script>
             function maxlengthNumber (obj){
@@ -215,4 +219,6 @@
             }
         </script>
     @endpush
+
+    
 </div>

@@ -13,3 +13,23 @@
 .btn-green{
     @apply bg-green-600 hover:bg-green-500;
 }
+
+.enlace .active{
+    background: #e9e7e7;
+    padding: 0.2rem 0.8rem;
+    border-radius: 0.3rem;
+    font-weight: 600;
+}
+.ulli li{
+    padding-bottom: 0.5rem;
+}
+.ulcontact li{
+    border-bottom: 1px solid #e9ecef ;
+}
+.separacion{
+    letter-spacing: 10px;
+}
+
+.add_prod:hover {
+    transform: scale(1.1);
+}

@@ -5,18 +5,19 @@
                 {{-- <x-jet-authentication-card-logo /> --}}
             </x-slot>
 
-            <x-jet-validation-errors class="mb-4" />
             <div class="grid grid-cols-1 md:grid-cols-2 gap-2 ">
                 <div class="alselcent">
                     <div class="flex items-center justify-center text-center pb-6 ">
                         <div>
-                            <img src="{{asset('img/logo.png')}}" class="w-16"  alt="">
+                            <x-jet-authentication-card-logo />
                         </div>
                         <div>
-                            <p class="ml-4 text-xl md:text-3xl txtbrde text-left font-bold">Restablecer <br>tu
+                            <p class="ml-4 text-xl md:text-3xl  text-left font-bold">Restablecer <br>tu
                                 contraseña </p>
                         </div>
                     </div>
+            <x-jet-validation-errors class="mb-4" />
+
                     <form method="POST" action="{{ route('password.update') }}">
                         @csrf
 
@@ -42,7 +43,7 @@
                         </div>
 
                         <div class="mt-4 w-full">
-                            <x-jet-button class="d-blck w-full text-center bg-footer">
+                            <x-jet-button class="d-blck w-full text-center">
                                 {{ __('Reset Password') }}
                             </x-jet-button>
                         </div>
