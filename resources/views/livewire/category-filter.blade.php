@@ -88,18 +88,19 @@
                     @forelse ($products as $product)
                         <li class="bg-white  ">
                             <article class="border-2 overflow-hidden border-gray-300 rounded-xl zoomcatalg ">
-                                
+
                                 <a href="{{ route('products.show', $product) }}">
                                     <figure class="relative">
                                         <div class="absolute z-30 mt-4 ml-4">
                                             @if ($product->offer == 0)
-                                          
                                             @else
-                                            <div class="bg-red-600 text-white px-1 py-1 w-16 rounded-lg z-50">
-                                                <p class="text-center text-sm font-semibold">
-                                                    - {{ intval((($product->offer - $product->price)/$product->offer)*100)}} %
-                                                </p>
-                                            </div>
+                                                <div class="bg-red-600 text-white px-1 py-1 w-16 rounded-lg z-50">
+                                                    <p class="text-center text-sm font-semibold">
+                                                        -
+                                                        {{ intval((($product->offer - $product->price) / $product->offer) * 100) }}
+                                                        %
+                                                    </p>
+                                                </div>
                                             @endif
                                         </div>
                                         @if ($product->images->count())
@@ -110,40 +111,45 @@
                                                 src="https://images.pexels.com/photos/5082560/pexels-photo-5082560.jpeg?cs=srgb&dl=pexels-cottonbro-5082560.jpg&fm=jpg"
                                                 alt="">
                                         @endif
-                                        
+
                                     </figure>
                                     <div class="py-2 px-2">
-                                        <p class="text-gray-400 font-medium text-xs text-center uppercase"> {{$product->subcategory->name}}</p>
-                                       
-                                        <h1 class="text-lg  text-center font-semibold scrollflow -slide-bottom -opacity">
+                                        <p class="text-gray-400 font-medium text-xs text-center uppercase">
+                                            {{ $product->subcategory->name }}</p>
 
-                                            {{ Str::limit($product->name,40, '...') }}
+                                        <h1
+                                            class="text-lg  text-center font-semibold scrollflow -slide-bottom -opacity">
+
+                                            {{ Str::limit($product->name, 40, '...') }}
 
                                         </h1>
-                                        <p class="font-bold text-center text-red-600 scrollflow -slide-bottom -opacity">S/ {{ $product->price }}</p>
-                                      @if (  $product->offer != 0)
-                                        <p class="text-center text-gray-300 line-through">s/ {{$product->offer}}</p>
-                                          
-                                      @else
-                                          
-                                      @endif
+                                        <p class="font-bold text-center text-red-600 scrollflow -slide-bottom -opacity">
+                                            S/ {{ $product->price }}</p>
+                                        @if ($product->offer != 0)
+                                            <p class="text-center text-gray-300 line-through">s/ {{ $product->offer }}
+                                            </p>
+                                        @else
+                                        @endif
                                         <div class="flex justify-center py-4">
-                                            <button class="text-white add_prod font-medium text-sm bg-blue-800 px-5 py-2 rounded-xl"><i class="fa-solid fa-magnifying-glass mr-2"></i>Ver</button>
+                                            <button
+                                                class="text-white add_prod font-medium text-sm bg_pricipal px-5 py-2 rounded-xl"><i
+                                                    class="fa-solid fa-magnifying-glass mr-2"></i>Ver</button>
                                         </div>
-                                     
-                                      
+
+
                                     </div>
                                 </a>
                             </article>
                         </li>
                     @empty
 
-                    <li class="md:col-span-2 lg:col-span-4">
-                        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-                            <strong class="font-bold">Upss!</strong>
-                            <span class="block sm:inline">No existe ningún producto con ese filtro.</span>
-                        </div>
-                    </li>
+                        <li class="md:col-span-2 lg:col-span-4">
+                            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
+                                role="alert">
+                                <strong class="font-bold">Upss!</strong>
+                                <span class="block sm:inline">No existe ningún producto con ese filtro.</span>
+                            </div>
+                        </li>
                     @endforelse
                 </ul>
             @else
@@ -151,16 +157,17 @@
                     @forelse ($products as $product)
                         <x-product-list :product="$product" />
                     @empty
-                       
-                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-                        <strong class="font-bold">Upss!</strong>
-                        <span class="block sm:inline">No existe ningún producto con ese filtro.</span>
-                    </div>
+
+                        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
+                            role="alert">
+                            <strong class="font-bold">Upss!</strong>
+                            <span class="block sm:inline">No existe ningún producto con ese filtro.</span>
+                        </div>
                     @endforelse
                 </ul>
             @endif
 
-          <div class="mt-4 links_mds">
+            <div class="mt-4 links_mds">
                 {{ $products->links() }}
             </div>
         </div>

@@ -1,6 +1,6 @@
 <x-app-layout>
     
-    <div class="container grid grid-cols-2 gap-12 py-6">
+    <div class="container grid grid-cols-2 gap-12 py-6 xl:py-20">
         <div>
             <h1 class="text-2xl font-bold">¿Quiénes somos?</h1>
             <p class="mb-8 mt-2">

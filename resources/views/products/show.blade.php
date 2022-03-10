@@ -99,7 +99,6 @@
             </div>
 
             <div class="glider-contain">
-
                 <div class="prelacionado">
                     @foreach ($subcategories as $subcategory)
                         @foreach ($subcategory->products as $product)
@@ -137,7 +136,7 @@
                                         @endif
                                         <div class="flex justify-center py-4">
                                             <button
-                                                class="text-white add_prod font-medium text-sm bg-blue-800 px-2 py-2 rounded-xl"><i
+                                                class="text-white add_prod font-medium text-sm bg_pricipal px-2 py-2 rounded-xl"><i
                                                     class="fa fa-shopping-cart mr-2"></i>Agregar</button>
                                         </div>
 

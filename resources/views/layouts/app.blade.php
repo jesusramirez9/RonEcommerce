@@ -14,19 +14,21 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     {{-- fontawesone --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     {{-- glider --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/glider-js/1.7.7/glider.min.css"
         integrity="sha512-YM6sLXVMZqkCspZoZeIPGXrhD9wxlxEF7MzniuvegURqrTGV2xTfqq1v9FJnczH+5OGFl5V78RgHZGaK34ylVg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     {{-- FLEXslider --}}
     <link rel="stylesheet" href="{{ asset('vendor/flexSlider/flexslider.css') }}">
-    {{--Animate css--}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    {{-- Animate css --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     @stack('link')
     @livewireStyles
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  
+
     <x-livewire-alert::scripts />
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
@@ -48,13 +50,13 @@
 
 
         <!-- Page Content -->
-        <main >
+        <main>
             {{ $slot }}
         </main>
 
         @livewire('footer')
-        
-      
+
+
         <div class="fondo_bg  mt-8 py-2 posfixd foot_sharp_usr ">
             <div class="container flex justify-between">
 
@@ -90,9 +92,9 @@
                                         Mis ordenes
                                     </x-jet-dropdown-link>
                                     @role('admin')
-                                    <x-jet-dropdown-link href="{{ route('admin.index') }}">
-                                        Administrador
-                                    </x-jet-dropdown-link>
+                                        <x-jet-dropdown-link href="{{ route('admin.index') }}">
+                                            Administrador
+                                        </x-jet-dropdown-link>
                                     @endrole
 
 
@@ -104,7 +106,7 @@
 
                                         <x-jet-dropdown-link href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
-                                                                                                  this.closest('form').submit();">
+                                                                                                      this.closest('form').submit();">
                                             {{ __('Log Out') }}
                                         </x-jet-dropdown-link>
                                     </form>
@@ -163,6 +165,9 @@
     </script>
     @stack('script')
     <script src="{{ asset('plugin/scrollflow/eskju.jquery.scrollflow.min.js') }}"></script>
+    <script>
+       
+    </script>
 </body>
 
 </html>

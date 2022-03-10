@@ -1,6 +1,6 @@
-<footer >
+<footer class="border-2 border-gray-400 border-opacity-20 border-t-2 mt-14 pt-6">
   
-    <div class="container grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-16">
+    <div class="max-w-8xl mx-auto px-2  grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-16">
         <div>
             <div class="mb-6">
                 <x-jet-application-mark class="block h-10 md:h-16 w-auto" />

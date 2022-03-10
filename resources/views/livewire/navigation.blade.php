@@ -1,5 +1,5 @@
 <div>
-    <div class="bg-blue-900 py-2 md:py-8">
+    <div class="bg_pricipal py-2 md:py-8">
         <div class=" flex items-center container text-white justify-between">
             <div class="">
                 <x-jet-application-mark class="block h-10 md:h-16 w-auto" />
@@ -322,4 +322,7 @@
             </ul>
         </div>
     </div> --}}
+    @push('script')
+       
+    @endpush
 </div>
